@@ -13,7 +13,7 @@ sqlmap does all our hardwork and gives us the entire database if the fields are 
 
 Deploy the machine and open the IP.
 
-We were given clue as /s**t***l
+We were given clue as /s * * t* * *l
 
 Now lets try /santapanel (cuz of the word 'panel' means admin access page) 
 
@@ -37,22 +37,22 @@ Dumps us the data table.
 
 ## Quesitons
 1. Without using directory brute forcing, what's Santa's secret login panel?
-	-Ans: /santapanel
+	- Ans: /santapanel
 
 2. Visit Santa's secret login panel and bypass the login using SQLi
-	-Ans: Not needed (but do it!!! mentioned above how to do it!!!)
+	- Ans: Not needed (but do it!!! mentioned above how to do it!!!)
 
 3. How many entries are there in the gift database?
-	-Ans: 22
+	- Ans: 22
 
 4. What did Paul ask for?
 	-Ans: Github Ownership
 
 5. What is the flag?
-	-Ans: thmfox{All_I_Want_for_Christmas_Is_You}
+	- Ans: thmfox{All_I_Want_for_Christmas_Is_You}
 
 6. What is admin's password?
-	-Ans: EhCNSWzzFP6sc7gB
+	- Ans: EhCNSWzzFP6sc7gB
 
 ### Conclusion
 
