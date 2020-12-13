@@ -1,0 +1,71 @@
+[?2004hY
+[?2004l_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+         WordPress Security Scanner by the WPScan Team
+                         Version 3.8.10
+       Sponsored by Automattic - https://automattic.com/
+       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+_______________________________________________________________
+
+[34m[i][0m It seems like you have not updated the database for some time.
+[?] Do you want to update now? [Y]es [N]o, default: [N][34m[i][0m Updating the Database ...
+[34m[i][0m Update completed.
+
+[32m[+][0m URL: http://10.10.228.32/wordpress/ [10.10.228.32]
+[32m[+][0m Started: Sun Dec 13 04:36:41 2020
+
+Interesting Finding(s):
+
+[32m[+][0m Headers
+ | Interesting Entry: Server: Apache/2.4.29 (Ubuntu)
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[32m[+][0m XML-RPC seems to be enabled: http://10.10.228.32/wordpress/xmlrpc.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access
+
+[32m[+][0m WordPress readme found: http://10.10.228.32/wordpress/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[32m[+][0m Upload directory has listing enabled: http://10.10.228.32/wordpress/wp-content/uploads/
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[32m[+][0m The external WP-Cron seems to be enabled: http://10.10.228.32/wordpress/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[32m[+][0m WordPress version 5.5.1 identified (Insecure, released on 2020-09-01).
+ | Found By: Rss Generator (Passive Detection)
+ |  - http://10.10.228.32/wordpress/index.php/feed/, <generator>https://wordpress.org/?v=5.5.1</generator>
+ |  - http://10.10.228.32/wordpress/index.php/comments/feed/, <generator>https://wordpress.org/?v=5.5.1</generator>
+
+[33m[!][0m No WPVulnDB API Token given, as a result vulnerability data has not been output.
+[33m[!][0m You can get a free API token with 50 daily requests by registering at https://wpscan.com/register
+
+[32m[+][0m Finished: Sun Dec 13 04:36:42 2020
+[32m[+][0m Requests Done: 14
+[32m[+][0m Cached Requests: 28
+[32m[+][0m Data Sent: 2.381 KB
+[32m[+][0m Data Received: 15.629 MB
+[32m[+][0m Memory used: 128.785 MB
+[32m[+][0m Elapsed time: 00:00:01
+
+Scan Aborted: Canceled by User
