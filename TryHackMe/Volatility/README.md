@@ -1,8 +1,8 @@
-# Voltality
+# Volatility
 
-This challenge covers on how to analyze memory dumps using voltlaity tool
+This challenge covers on how to analyze memory dumps using volatility tool
 
-Lets start our challenge by downloading [voltality tools](https://github.com/volatilityfoundation/volatility)
+Lets start our challenge by downloading [volatility tools](https://github.com/volatilityfoundation/volatility)
 
 After that download the memory dump sample.
 
@@ -126,6 +126,6 @@ Dumps us all the dll related to that process ID and lets upload these dll's to [
 	- Ans: Cridex
 
 
-All in all this was nice challenge helps you understand how we can use voltality for forensic analysis.
+All in all this was nice challenge helps you understand how we can use volatility for forensic analysis.
 
 Thank you <3
